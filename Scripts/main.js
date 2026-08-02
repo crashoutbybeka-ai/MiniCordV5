@@ -348,7 +348,7 @@ function displayMessages(records) {
 
     // Replace this with YOUR Supabase Auth UUID
     const OWNER_ID =
-        "b26e21b2-0053-4e76-bc4f-279d4ba1b8fb";
+        "d98b9864-fba7-4113-84e5-af807c69174f";
 
     for (const record of records) {
 
