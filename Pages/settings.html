@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MiniCord Settings</title>
+  <link rel="stylesheet" href="../style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+  <script src="../Scripts/appCore.js"></script>
+  <script src="../Scripts/supabaseClient.js"></script>
+</head>
+<body id="pages">
+  <button id="side_btn">&lt;</button>
+
+  <main class="settings-panel">
+    <h1>Settings</h1>
+
+    <section class="settings-card">
+      <h2>Sidebar</h2>
+      <label for="sidebarPosition">Choose sidebar position</label>
+      <select id="sidebarPosition">
+        <option value="left">Left</option>
+        <option value="right">Right</option>
+      </select>
+    </section>
+
+    <section class="settings-card">
+      <h2>Theme</h2>
+      <label for="themeUpload">Upload a custom CSS theme</label>
+      <input type="file" id="themeUpload" accept=".css,text/css">
+      <p id="settingsStatus" class="settings-status">Choose a theme to personalize MiniCord.</p>
+    </section>
+  </main>
+
+  <nav class="sidebar">
+    <button id="servers">Servers</button>
+    <button id="settings">Settings</button>
+    <button id="thememarketplace">Theme Marketplace</button>
+    <input type="file" id="themeUploadSidebar" accept=".css,text/css">
+    <button id="resetTheme">Reset Theme</button>
+    <button id="logout">Logout</button>
+  </nav>
+
+  <script src="../Scripts/Theme.js"></script>
+  <script type="module">
+    import { bindSidebar, applySidebarPosition, setSidebarOpen, syncSidebarUI } from "../Scripts/sidebar.js";
+
+    window.sidebarModule = {
+      bindSidebar,
+      applySidebarPosition,
+      setSidebarOpen,
+      syncSidebarUI
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      bindSidebar();
+      const savedPosition = localStorage.getItem("sidebarPosition") || "right";
+      applySidebarPosition(savedPosition, { persist: false });
+      setSidebarOpen(false);
+      syncSidebarUI();
+    });
+  </script>
+  <script src="../Scripts/settings.js"></script>
+</body>
+</html>

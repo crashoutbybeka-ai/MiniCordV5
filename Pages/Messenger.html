@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MiniCord Messenger</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../Scripts/appCore.js"></script>
+  <script src="../Scripts/supabaseClient.js"></script>
+</head>
+<body id="Messenger">
+  <header class="messenger-header">
+    <h1>MiniCord</h1>
+  </header>
+
+  <main class="messenger-main">
+    <div id="messages"></div>
+
+    <button id="side_btn" aria-label="Toggle sidebar">&lt;</button>
+
+    <form id="messageForm" autocomplete="off">
+      <input type="text" id="messageField" placeholder="Enter your message" required />
+      <button type="submit">Send</button>
+    </form>
+  </main>
+
+  <nav class="sidebar">
+    <button id="servers">Servers</button>
+    <button id="settings">Settings</button>
+    <button id="thememarketplace">Theme Marketplace</button>
+    <input type="file" id="themeUpload" accept=".css,text/css" />
+    <button id="resetTheme">Reset Theme</button>
+    <button id="logout">Logout</button>
+  </nav>
+
+  <script type="module">
+    import { bindSidebar, applySidebarPosition, setSidebarOpen, syncSidebarUI } from "../Scripts/sidebar.js";
+
+    window.sidebarModule = {
+      bindSidebar,
+      applySidebarPosition,
+      setSidebarOpen,
+      syncSidebarUI
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      bindSidebar();
+      const savedPosition = localStorage.getItem("sidebarPosition") || "right";
+      applySidebarPosition(savedPosition, { persist: false });
+      setSidebarOpen(false);
+      syncSidebarUI();
+    });
+  </script>
+  <script src="../Scripts/main.js"></script>
+  <script src="../Scripts/Theme.js"></script>
+</body>
+</html>

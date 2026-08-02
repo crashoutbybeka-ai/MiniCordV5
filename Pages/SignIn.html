@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MiniCord Sign In</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="../Scripts/appCore.js"></script>
+  <script src="../Scripts/supabaseClient.js"></script>
+</head>
+<body id="pages" class="auth-page">
+  <main class="auth-shell">
+    <section class="auth-card">
+      <h1>Welcome back</h1>
+      <p class="auth-subtitle">Sign in to continue to MiniCord.</p>
+
+      <div id="loadingScreen" class="loading-screen">Signing you in...</div>
+
+      <form id="signInForm" class="auth-form">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Email" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Password" required />
+
+        <button id="signInBtn" type="submit">Sign In</button>
+      </form>
+
+      <div class="line-container">
+        <p>OR</p>
+      </div>
+
+      <button class="google-btn" type="button" id="googleSignInBtn">
+        <img src="../Assests/google.svg" alt="Google Logo" class="google-logo" />
+        <span>Sign In with Google</span>
+      </button>
+
+      <p class="auth-link">
+        Don’t have an account?
+        <a href="SignUp.html">Sign Up</a>
+      </p>
+    </section>
+  </main>
+
+  <script src="../Scripts/signIn.js"></script>
+  <script src="../Scripts/Theme.js"></script>
+</body>
+</html>
